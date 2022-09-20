@@ -1,0 +1,58 @@
+{
+  "name": "@shotero/mates-backend",
+  "version": "0.1.0",
+  "description": "Open source alumni and community manager",
+  "main": "app.js",
+  "type": "module",
+  "imports": {
+    "#api/*": "./api/*"
+  },
+  "scripts": {
+    "dev": "DEBUG=knex:query nodemon -r dotenv/config --experimental-json-modules app",
+    "start": "node --experimental-json-modules app.js",
+    "generate": "node --experimental-json-modules ./generate.js",
+    "debug": "DEBUG=knex:query NODE_ENV=development nodemon --experimental-json-modules --inspect app.js"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "author": "shotero",
+  "license": "Proprietary",
+  "dependencies": {
+    "@koa/cors": "^3.4.1",
+    "@koa/router": "^12.0.0",
+    "ajv-formats": "^2.1.1",
+    "grant": "^5.4.21",
+    "knex": "^2.3.0",
+    "koa": "^2.13.4",
+    "koa-accesslog": "^1.0.0",
+    "koa-bodyparser": "^4.3.0",
+    "koa-qs": "^3.0.0",
+    "koa-session": "^6.2.0",
+    "objection": "^3.0.1",
+    "pg": "^8.8.0",
+    "ramda": "^0.28.0"
+  },
+  "devDependencies": {
+    "@shotero/gen-api": "^0.1.6",
+    "dotenv": "^16.0.2",
+    "eslint": "^8.23.1",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
+    "nodemon": "^2.0.20",
+    "prettier": "^2.7.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "git add"
+    ]
+  }
+}
